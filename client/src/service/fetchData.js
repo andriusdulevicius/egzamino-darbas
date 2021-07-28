@@ -21,6 +21,19 @@ const getAllUsers = async () => {
   }
 };
 
+const postNewUser = async (newObj) => {
+  try {
+    const res = await fetch(`${fetchApiBaseUrl}/addNewUser`, {
+      method: 'POST',
+      body: JSON.stringify(newObj),
+      ...reqOptions,
+    });
+    await res.json();
+  } catch (err) {
+    console.log('Error occured: ', err);
+  }
+};
+
 const deleteOneUser = async (id) => {
   try {
     const res = await fetch(`${fetchApiBaseUrl}/delete/${id}`, {
@@ -33,4 +46,4 @@ const deleteOneUser = async (id) => {
   }
 };
 
-export { getAllUsers, deleteOneUser };
+export { getAllUsers, deleteOneUser, postNewUser };
