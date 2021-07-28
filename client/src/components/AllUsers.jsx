@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getAllUsers, deleteOneUser } from '../service/fetchData';
 import OneUser from './OneUser';
+import { toast } from 'react-toastify';
 
 class AllUsers extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class AllUsers extends Component {
   handleDelete = async (userId) => {
     await deleteOneUser(userId);
     this.loadAllUsers();
+    toast.error(`A User has been deleted.`);
   };
 
   render() {

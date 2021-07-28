@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { editOneUser } from '../service/fetchData';
+import { toast } from 'react-toastify';
 
 class OneUser extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class OneUser extends Component {
   handleEdit = async (userId, newBody) => {
     await editOneUser(userId, newBody);
     this.setState({ editStatus: false });
+    toast.info('User has been updated');
   };
 
   toggleEdit = () => {

@@ -1,6 +1,8 @@
 import './App.css';
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
 import AddNewUser from './components/AddNewUser';
 import AllUsers from './components/AllUsers';
@@ -10,6 +12,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className='App'>
+      <ToastContainer />
       <BrowserRouter>
         <Navbar />
         <div className='main-body container'>

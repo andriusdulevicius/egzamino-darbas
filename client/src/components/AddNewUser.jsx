@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { postNewUser } from '../service/fetchData';
+import { toast } from 'react-toastify';
 
 class AddNewUser extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class AddNewUser extends Component {
   addNewUser = (e) => {
     e.preventDefault();
     postNewUser(this.state.formData);
+    toast.success(`A new user has been created.`);
     this.props.history.push('/');
   };
 
