@@ -46,4 +46,13 @@ const deleteOneUser = async (id) => {
   }
 };
 
-export { getAllUsers, deleteOneUser, postNewUser };
+const editOneUser = async (id, newBody) => {
+  const res = await fetch(`${fetchApiBaseUrl}/edit/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(newBody),
+    ...reqOptions,
+  });
+  await res.json();
+};
+
+export { getAllUsers, deleteOneUser, postNewUser, editOneUser };

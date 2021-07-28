@@ -26,4 +26,17 @@ router.delete('/delete/:id', async (req, res) => {
   res.send({ success: true, msg: `User has been deleted.` });
 });
 
+router.put('/edit/:id', async (req, res) => {
+  const { userName, age, email } = req.body;
+  await User.findOneAndUpdate(
+    { _id: req.params.id },
+    {
+      userName,
+      age,
+      email,
+    }
+  );
+  res.send({ success: true, msg: `User ${userName} has been updated.` });
+});
+
 module.exports = router;
