@@ -1,0 +1,16 @@
+### adding new user
+
+POST http://localhost:5000/addNewUser
+Content-Type: application/json
+
+{
+    "userName":"Marius",
+    "age":31,
+    "email":"marius@parasysdesimt.com",
+    "password":"blahblah",
+    "password2":"blahblah"
+}
+
+### getting all users
+
+GET http://localhost:5000/allUsers
