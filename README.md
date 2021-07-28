@@ -14,7 +14,7 @@ Data is sent in JSON format.
 
 1. clone repository
 1. npm install
-1. copy .env.sample to .env and fill mongo atlasss string
+1. copy .env.sample to .env and fill mongo atlass string
 
 ## Dev scripts
 
