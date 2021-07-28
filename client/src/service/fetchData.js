@@ -21,4 +21,16 @@ const getAllUsers = async () => {
   }
 };
 
-export { getAllUsers };
+const deleteOneUser = async (id) => {
+  try {
+    const res = await fetch(`${fetchApiBaseUrl}/delete/${id}`, {
+      method: 'DELETE',
+      ...reqOptions,
+    });
+    await res.json();
+  } catch (err) {
+    console.log('Delete user failed.. ', err);
+  }
+};
+
+export { getAllUsers, deleteOneUser };

@@ -4,9 +4,9 @@ POST http://localhost:5000/addNewUser
 Content-Type: application/json
 
 {
-    "userName":"Marius",
+    "userName":"Andrius",
     "age":31,
-    "email":"marius@parasysdesimt.com",
+    "email":"Andrius@gausdesimt.com",
     "password":"blahblah",
     "password2":"blahblah"
 }

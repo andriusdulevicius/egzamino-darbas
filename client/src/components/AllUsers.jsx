@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getAllUsers } from '../service/fetchData';
+import { getAllUsers, deleteOneUser } from '../service/fetchData';
 import OneUser from './OneUser';
 
 class AllUsers extends Component {
@@ -19,6 +19,11 @@ class AllUsers extends Component {
     this.setState({ allUsersData: resultData });
   };
 
+  handleDelete = async (userId) => {
+    await deleteOneUser(userId);
+    this.loadAllUsers();
+  };
+
   render() {
     return (
       <div className='users-page'>
@@ -35,7 +40,7 @@ class AllUsers extends Component {
           </thead>
 
           {this.state.allUsersData.map((user) => (
-            <OneUser key={user._id} oneUser={user} />
+            <OneUser key={user._id} oneUser={user} onDelete={this.handleDelete} />
           ))}
         </table>
       </div>

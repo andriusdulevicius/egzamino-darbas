@@ -4,7 +4,8 @@ class OneUser extends Component {
   state = {};
 
   render() {
-    const { userName, age, email, updatedAt } = this.props.oneUser;
+    const { onDelete } = this.props;
+    const { _id, userName, age, email, updatedAt } = this.props.oneUser;
     const updatedTime = new Date(updatedAt).toLocaleDateString('LT');
 
     return (
@@ -16,7 +17,9 @@ class OneUser extends Component {
           <td className='d-none'>{updatedTime}</td>
           <td className='buttons'>
             <button className='edit-btn mr-1 secondary-btn'>Edit</button>
-            <button className='delete-btn secondary-btn'>Delete</button>
+            <button className='delete-btn secondary-btn' onClick={() => onDelete(_id)}>
+              Delete
+            </button>
           </td>
         </tr>
       </tbody>
