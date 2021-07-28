@@ -8,6 +8,9 @@ function Navbar() {
           Mano<strong>Logo</strong>
         </Link>
         <div className='nav-links'>
+          <Link className='nav-link' to='/about'>
+            About
+          </Link>
           <Link className='nav-link' to='/'>
             Visi vartotojai
           </Link>
