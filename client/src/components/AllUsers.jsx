@@ -31,11 +31,11 @@ class AllUsers extends Component {
         <table className='users-table'>
           <thead className='table-head'>
             <tr>
-              <th>Vardas</th>
-              <th>Amžius</th>
-              <th>El-paštas</th>
-              <th className='d-none'>Atnaujintas</th>
-              <th>Veiksmai</th>
+              <th className='pl-1'>Vardas</th>
+              <th className='pl-1'>Amžius</th>
+              <th className='pl-1'>El-paštas</th>
+              <th className='d-none pl-1'>Atnaujintas</th>
+              <th className='pl-1'>Veiksmai</th>
             </tr>
           </thead>
 
