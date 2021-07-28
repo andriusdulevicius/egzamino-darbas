@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getAllUsers } from '../service/fetchData';
+import OneUser from './OneUser';
 
 class AllUsers extends Component {
   constructor(props) {
@@ -20,10 +21,23 @@ class AllUsers extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.allUsersData.map((User) => (
-          <div className='one-user'> {Object.entries(User)} </div>
-        ))}
+      <div className='users-page'>
+        <h1 className='users-header'>Vartotojų sąrašas:</h1>
+        <table className='users-table'>
+          <thead className='table-head'>
+            <tr>
+              <th>Vardas</th>
+              <th>Amžius</th>
+              <th>El-paštas</th>
+              <th className='d-none'>Atnaujintas</th>
+              <th>Veiksmai</th>
+            </tr>
+          </thead>
+
+          {this.state.allUsersData.map((user) => (
+            <OneUser key={user._id} oneUser={user} />
+          ))}
+        </table>
       </div>
     );
   }
