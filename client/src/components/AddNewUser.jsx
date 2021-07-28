@@ -25,6 +25,7 @@ class AddNewUser extends Component {
   addNewUser = (e) => {
     e.preventDefault();
     postNewUser(this.state.formData);
+    this.props.history.push('/');
   };
 
   render() {
