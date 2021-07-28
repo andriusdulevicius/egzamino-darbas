@@ -23,7 +23,7 @@ class AllUsers extends Component {
   handleDelete = async (userId) => {
     await deleteOneUser(userId);
     this.loadAllUsers();
-    toast.error(`A User has been deleted.`);
+    toast.error(`Vartotojas buvo ištrintas.`);
   };
 
   render() {

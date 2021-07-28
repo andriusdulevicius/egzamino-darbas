@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { editOneUser } from '../service/fetchData';
 import { toast } from 'react-toastify';
+import { validate } from '../service/validation';
 
 class OneUser extends Component {
   constructor(props) {
@@ -14,19 +15,22 @@ class OneUser extends Component {
         email: this.props.oneUser.email,
         updatedAt: this.props.oneUser.updatedAt,
       },
+      errorMsg: '',
     };
   }
 
   handleChange = ({ target }) => {
+    const errorMsg = validate(target.name, target.value);
     const editedUserCopy = { ...this.state.editedUser };
     editedUserCopy[target.name] = target.value;
-    this.setState({ editedUser: editedUserCopy });
+    this.setState({ editedUser: editedUserCopy, errorMsg });
   };
 
   handleEdit = async (userId, newBody) => {
+    if (this.state.errorMsg !== '') return;
     await editOneUser(userId, newBody);
-    this.setState({ editStatus: false });
-    toast.info('User has been updated');
+    this.setState({ editStatus: false, errorMsg: '' });
+    toast.info('Vartotojo informacija atnaujinta');
   };
 
   toggleEdit = () => {
@@ -40,8 +44,13 @@ class OneUser extends Component {
 
     return (
       <tbody className='table-body'>
+        {this.state.errorMsg !== '' && (
+          <td colspan='4' className='error-msg-edit'>
+            {this.state.errorMsg}
+          </td>
+        )}
         {!this.state.editStatus ? (
-          <tr className='table-row'>
+          <tr className='table-row '>
             <td className='table-row__userName'>{userName}</td>
             <td className='table-row__age'>{age}</td>
             <td className='table-row__email'>{email}</td>
@@ -56,7 +65,7 @@ class OneUser extends Component {
             </td>
           </tr>
         ) : (
-          <tr className='table-row'>
+          <tr className='table-row table-row-edit'>
             <td>
               <input
                 className='table-row__userName'
